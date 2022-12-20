@@ -1,7 +1,7 @@
 /**
  * ⭐ Puntos conseguidos: 174
- * 3232 ops/s
- * Complejidad cognitiva: 1 
+ * 🕑 3232 ops/s
+ * 🎯 Complejidad cognitiva: 1 
  */
 
 const packOfGifts = ["book", "doll", "ball"]

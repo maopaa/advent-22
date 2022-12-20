@@ -1,7 +1,7 @@
 /**
- * Puntos conseguidos: 110
- * 2517 ops/s
- * Complejidad cognitiva: 1
+ * ⭐ Puntos conseguidos: 110
+ * 🕑 2517 ops/s
+ * 🎯 Complejidad cognitiva: 1
  */
 
 const gifts = ['cat', 'game', 'socks'];

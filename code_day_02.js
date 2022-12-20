@@ -1,7 +1,7 @@
 /**
- * Puntos conseguidos: 91
- * 2778 ops/s
- * Complejidad cognitiva: 1 (Más bajo es mejor)
+ * ⭐ Puntos conseguidos: 91
+ * 🕑 2778 ops/s
+ * 🎯 Complejidad cognitiva: 1
  */
 
 const year = 2022
