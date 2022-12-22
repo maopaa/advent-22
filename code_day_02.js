@@ -1,6 +1,6 @@
 /**
- * ⭐ Puntos conseguidos: 91
- * 🕑 2778 ops/s
+ * ⭐ Puntos conseguidos: 121
+ * 🕑 2427 ops/s
  * 🎯 Complejidad cognitiva: 1
  */
 
@@ -11,10 +11,8 @@ countHours(year, holidays) // 2 días -> 4 horas extra en el año
 
 // > Solucion
 function countHours(year, holidays) {
-    let extra = 0
-    holidays.map( day => {
-      const date = new Date( `${day}/${year}` )
-      date.getDay() > 0 && date.getDay() < 6 ? extra += 2 : extra += 0
-    })
-    return extra 
+    return holidays.map(holiday => {
+        let dayOfWeek = new Date(holiday + '/' + year).getDay();
+        return [1, 2, 3, 4, 5].includes(dayOfWeek);
+    }).reduce((count, extra) => count + extra) * 2;
 }

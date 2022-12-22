@@ -1,7 +1,7 @@
 /**
- * >> Puntuación: 220
- * >> 2592 ops/s
- * >> Complejidad cognitiva: 2
+ * ⭐ Puntos conseguidos: 220
+ * 🕑 2592 ops/s
+ * 🎯 Complejidad cognitiva: 2
  */
 
 getCompleted('01:10:10', '03:30:30');

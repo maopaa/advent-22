@@ -1,6 +1,6 @@
 /**
- * ⭐ Puntos conseguidos: 121
- * 🕑 2449 ops/s
+ * ⭐ Puntos conseguidos: 156
+ * 🕑 2452 ops/s
  * 🎯 Complejidad cognitiva: 1
 */
 
@@ -18,15 +18,9 @@ fitsInOneBox([
 
 // > Solución
 function fitsInOneBox(boxes) {
-  const sort = boxes.sort((first, second) => {
-    return first.l - second.l 
-  })
-
-  return sort.every(({ l, w, h }, index, list) => {
-    let firstBox = index === 0
-    let { l: prevL, w: prevW, h: prevH } = list[index - 1] || {}
-    let canContainPrevious = l > prevL && w > prevW && h > prevH
-    
-    return firstBox || canContainPrevious
-  })
+    return boxes.sort((a,b) => {
+        return (b.l + b.w + b.h) - (a.l + a.w + a.h)
+    }).slice(1).every((box, i) => {
+        return box.l < boxes[i].l && box.w < boxes[i].w && box.h < boxes[i].h
+    });
 }

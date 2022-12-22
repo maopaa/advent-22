@@ -1,7 +1,7 @@
 /**
- * ⭐ Puntos conseguidos: 100
+ * ⭐ Puntos conseguidos: 200
  * 🕑 2025 ops/s
- * 🎯 Complejidad cognitiva: 5
+ * 🎯 Complejidad cognitiva: 1
  */
 
 printTable([
@@ -15,45 +15,38 @@ printTable([
     { name: 'Book Learn Web Dev', quantity: 23531 }
 ])
 
-// > Solución
+// --> Solución
 function printTable(gifts) {
+    const getLength = (value) => `${value}`.length
+    const { maxGiftLength, maxQuantityLength } = gifts.reduce(
+        (sizes, { name, quantity }) => {
+            return {
+                maxGiftLength: Math.max(getLength(name), sizes.maxGiftLength),
+                maxQuantityLength: Math.max(
+                    getLength(quantity),
+                    sizes.maxQuantityLength
+                ),
+            }
+        },
+        {
+            maxGiftLength: 4,
+            maxQuantityLength: 8,
+        }
+    )
+    const [borderTop, borderBottom] = ["+", "*"].map((value) =>
+        value.repeat(7 + maxGiftLength + maxQuantityLength)
+    )
+    const header = `| Gift${" ".repeat(maxGiftLength - 4)} | Quantity${" ".repeat(
+        maxQuantityLength - 8
+    )} |`
+    const div = `| ${"-".repeat(maxGiftLength)} | ${"-".repeat(
+        maxQuantityLength
+    )} |`
+    const content = gifts.map(({ name, quantity }) => {
+        return `| ${name}${" ".repeat(
+            maxGiftLength - getLength(name)
+        )} | ${quantity}${" ".repeat(maxQuantityLength - getLength(quantity))} |`
+    })
 
-    const header = ['Gift', 'Quantity'];
-
-    const maxName = Math.max(
-        header[0].length,
-        ...gifts.map(g => g.name.length)
-    );
-
-    const maxQuantity = Math.max(
-        header[1].length,
-        ...gifts.map(g => g.quantity.toString().length)
-    );
-
-    let spaceName = maxName - header[0].length;
-    let spaceQuantity = maxQuantity - header[1].length;
-    if (spaceQuantity < 0 ) spaceQuantity = 0;
-
-    let size = 7 + header[0].length + spaceName +
-        header[1].length + spaceQuantity;
-
-    let print = '+'.repeat(size) + '\n' +
-        `| ${header[0]}${' '.repeat(spaceName)}` +
-        ` | ${header[1]}${' '.repeat(spaceQuantity)} |\n` +
-        `| ${'-'.repeat(header[0].length + spaceName)}` +
-        ` | ${'-'.repeat(header[1].length + spaceQuantity)} |\n`;
-
-    gifts.forEach( gift => {
-        let giftLength = maxName - gift.name.length;
-        let quantityLength = maxQuantity - gift.quantity.toString().length;
-        if (header[0].length > maxName)
-            giftLength = header[0].length - gift.name.length;
-        if (header[1].length > maxQuantity)
-            quantityLength = header[1].length - gift.quantity.toString().length;
-        print += `| ${gift.name}${' '.repeat(giftLength)}` +
-            ` | ${gift.quantity}${' '.repeat(quantityLength)} |\n`;
-    });
-
-    print += '*'.repeat(size);
-    return print;
+    return [borderTop, header, div, ...content, borderBottom].join("\n")
 }

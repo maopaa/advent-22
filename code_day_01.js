@@ -1,6 +1,6 @@
 /**
- * ⭐ Puntos conseguidos: 110
- * 🕑 2517 ops/s
+ * ⭐ Puntos conseguidos: 121
+ * 🕑 2539 ops/s
  * 🎯 Complejidad cognitiva: 1
  */
 
@@ -11,14 +11,8 @@ console.log(wrapped);
 
 // > Resultado
 function wrapping(gifts) {
-  const result = [];
-  gifts.forEach( (gift, index) => {
-    let paper = '**';
-    for ( let i=0; i<gift.length; i++ ) {
-      paper += '*';
-    }
-    result.push( paper + '\n*' + gift + '*\n' + paper );
+  return gifts.map( gift => {
+    let pattern = "*".repeat(gift.length + 2);
+    return `${pattern}\n*${gift}*\n${pattern}`;
   });
-
-  return result;
 }
